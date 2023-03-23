@@ -1,0 +1,42 @@
+<div style="text-align: center;">
+  <a href="" style="text-decoration: none;">
+    <h1 style="color: white;">RICK Y MORTY <img width="70" alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+    </h1>
+  </a>
+</div>
+
+<div *ngIf="loading" class="overlay">
+  <mat-progress-spinner mode="indeterminate" color="warn"></mat-progress-spinner>
+</div>
+
+
+
+<div>
+  <input type="text" class="form-control bg-dark text-light border-0 my-4 text-center" style="width:50%; margin: auto;"
+    (keyup)="search()" [(ngModel)]="searchcaracter" placeholder="Escribe aquí para buscar...">
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let personaje of filtrercaracter">
+      <div class="card bg-dark text-white rounded border border-primary mb-4">
+        <img class="card-img-top" src="{{ personaje.image }}" alt="{{ personaje.name }}">
+        <div class="card-body">
+          <h2 class="card-title"> {{ personaje.name }} </h2>
+          <b style="color:rgba(255, 255, 255, 0.656) ;">Estado:</b>
+          <p
+            [ngClass]="personaje.status === 'Alive' ? 'text-success' : personaje.status === 'unknown' ? '' : 'text-danger'">
+            {{ personaje.status }} </p>
+          <b style="color:rgba(255, 255, 255, 0.656) ;">Especie:</b>
+          <p class="card-text"> {{ personaje.species }} </p>
+          <b style="color:rgba(255, 255, 255, 0.656) ;">Genero:</b>
+          <p class="card-text"> {{ personaje.gender }}</p>
+          <b style="color:rgba(255, 255, 255, 0.656) ;">Visto por primera vez en:</b>
+          <p class="card-text">{{ personaje.origin.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
