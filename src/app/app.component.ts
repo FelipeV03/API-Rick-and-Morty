@@ -43,11 +43,11 @@ export class AppComponent {
     this.filtrercaracter = this.rickyMorty.filter((personaje) =>
       personaje.name.toLowerCase().includes(this.searchcaracter.toLowerCase())
     );
-    this.filtrercaracter = this.rickyMorty.filter((personaje) =>
-      personaje.status.toLowerCase().includes(this.searchcaracter.toLowerCase())
-    );
-    this.filtrercaracter = this.rickyMorty.filter((personaje) =>
-      personaje.species.toLowerCase().includes(this.searchcaracter.toLowerCase())
-    );
+    // this.filtrercaracter = this.rickyMorty.filter((personaje) =>
+    //   personaje.status.toLowerCase().includes(this.searchcaracter.toLowerCase())
+    // );
+    // this.filtrercaracter = this.rickyMorty.filter((personaje) =>
+    //   personaje.species.toLowerCase().includes(this.searchcaracter.toLowerCase())
+    // );
   }
 }
