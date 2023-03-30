@@ -37,6 +37,7 @@ export class AppComponent {
     });
   }
 
+
   // Aca se filtra la info de la API para poder buscarlo en la barra de busqueda y se muestra en la vista html
   search() {
     // console.log(this.searchcaracter);

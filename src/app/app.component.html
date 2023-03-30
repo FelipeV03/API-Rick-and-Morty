@@ -17,14 +17,14 @@
     (keyup)="search()" [(ngModel)]="searchcaracter" placeholder="Escribe aquí para buscar...">
 </div>
 
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3" *ngFor="let personaje of filtrercaracter">
-      <div class="card bg-dark text-white rounded border border-primary mb-4">
+      <div class="card bg-dark text-white rounded border border-primary mb-4 animate__animated animate__fadeIn">
+        <!-- animate__zoomInDown, animate__swing, animate__fadeIn -->
         <img class="card-img-top" src="{{ personaje.image }}" alt="{{ personaje.name }}">
         <div class="card-body">
-          <h2 class="card-title"> {{ personaje.name }} </h2>
+          <h3 class="card-title"> {{ personaje.name.slice(0, 17) }} </h3>
           <b style="color:rgba(255, 255, 255, 0.656) ;">Estado:</b>
           <p
             [ngClass]="personaje.status === 'Alive' ? 'text-success' : personaje.status === 'unknown' ? '' : 'text-danger'">
@@ -40,3 +40,9 @@
     </div>
   </div>
 </div>
+
+
+
+
+<!-- FOOTER -->
+<app-footer></app-footer>

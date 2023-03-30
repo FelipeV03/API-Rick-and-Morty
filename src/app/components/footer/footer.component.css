@@ -1,0 +1,18 @@
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.col-md-6 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imagen-derecha {
+    float: right;
+    max-width: 200px;
+    /*ajuste el ancho según sea necesario*/
+    margin-top: auto;
+    margin-bottom: auto;
+}
