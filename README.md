@@ -8,8 +8,8 @@ Este proyecto de Angular consume el API de Rick and Morty para mostrar informaci
 
 1. Clona este repositorio en tu máquina local.
 2. Abre una terminal en el directorio raíz del proyecto.
-3. Ejecuta npm install para instalar todas las dependencias.
-4. Ejecuta ng serve para arrancar la aplicación.
+3. Ejecuta `npm install` para instalar todas las dependencias.
+4. Ejecuta `ng serve` para arrancar la aplicación.
 5. Abre http://localhost:4200/ en tu navegador.
 
 ## Uso
@@ -23,7 +23,7 @@ Si deseas contribuir al proyecto, puedes hacer lo siguiente:
 1. Haz un fork del proyecto en tu cuenta de GitHub.
 2. Clona tu fork en tu máquina local.
 3. Realiza los cambios que desees.
-4. a una pull request con tus cambios.
+4. Crea una pull request con tus cambios.
 
 ## Licencia
 
