@@ -1,6 +1,6 @@
 # Rick and Morty Angular Project
 
-<img src="https://github.com/FelipeV03/FelipeV03/blob/main/image.png"/>
+<img src="https://github.com/FelipeV03/FelipeV03/blob/main/readmeImgs/apiRyM.png"/>
 
 Este proyecto de Angular consume el API de Rick and Morty para mostrar información sobre los personajes en cards. Cada card muestra la imagen del personaje, su estado, especie, género y la última vez que fue visto.
 
