@@ -1,27 +1,46 @@
-# ApiRickyMorty
+# Rick and Morty Angular Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
+<img src="https://github.com/FelipeV03/FelipeV03/blob/main/readmeImgs/apiRyM.png"/>
 
-## Development server
+Este proyecto de Angular consume el API de Rick and Morty para mostrar información sobre los personajes en cards. Cada card muestra la imagen del personaje, su estado, especie, género y la última vez que fue visto.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalación
 
-## Code scaffolding
+1. Clona este repositorio en tu máquina local.
+2. Abre una terminal en el directorio raíz del proyecto.
+3. Ejecuta `npm install` para instalar todas las dependencias.
+4. Ejecuta `ng serve` para arrancar la aplicación.
+5. Abre http://localhost:4200/ en tu navegador.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Uso
 
-## Build
+Una vez que hayas arrancado la aplicación, podrás ver por los diferentes personajes. Además, puedes utilizar el buscador para encontrar un personaje en particular.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Demo
+Puedes ver una demostración de este proyecto desplegado en [Api rick y Morty](https://api-ricky-morty-phi.vercel.app/).
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contribución
 
-## Running end-to-end tests
+Si deseas contribuir al proyecto, puedes hacer lo siguiente:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Haz un fork del proyecto en tu cuenta de GitHub.
+2. Clona tu fork en tu máquina local.
+3. Realiza los cambios que desees.
+4. Crea una pull request con tus cambios.
 
-## Further help
+## Licencia
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Este proyecto se distribuye bajo la licencia MIT.
+
+## Autor
+
+Este proyecto fue creado por Felipe Vargas. Puedes encontrarme en:
+
+LinkedIn: https://www.linkedin.com/in/dev-felipe-vargas/ <br/>
+GitHub: https://github.com/FelipeV03 <br/>
+Instagram: https://www.instagram.com/felipe._.v05/
+
+## Contacto
+
+Si tienes algún problema o pregunta sobre el proyecto, no dudes en contactarme.
