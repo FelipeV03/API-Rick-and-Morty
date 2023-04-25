@@ -16,6 +16,10 @@ Este proyecto de Angular consume el API de Rick and Morty para mostrar informaci
 
 Una vez que hayas arrancado la aplicación, podrás ver por los diferentes personajes. Además, puedes utilizar el buscador para encontrar un personaje en particular.
 
+## Demo
+Puedes ver una demostración de este proyecto desplegado en [Api rick y Morty](https://api-ricky-morty-phi.vercel.app/).
+
+
 ## Contribución
 
 Si deseas contribuir al proyecto, puedes hacer lo siguiente:
