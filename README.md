@@ -1,4 +1,4 @@
-# ApiRickyMorty
+# Rick and Morty Angular Project
 
 <img src="https://github.com/FelipeV03/FelipeV03/blob/main/image.png"/>
 
