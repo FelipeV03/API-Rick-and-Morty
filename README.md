@@ -33,9 +33,9 @@ Este proyecto se distribuye bajo la licencia MIT.
 
 Este proyecto fue creado por Felipe Vargas. Puedes encontrarme en:
 
-LinkedIn: https://www.linkedin.com/in/dev-felipe-vargas/
-GitHub: https://github.com/FelipeV03
-Instagram: felipe._.v05
+LinkedIn: https://www.linkedin.com/in/dev-felipe-vargas/ <br/>
+GitHub: https://github.com/FelipeV03 <br/>
+Instagram: https://www.instagram.com/felipe._.v05/
 
 ## Contacto
 
