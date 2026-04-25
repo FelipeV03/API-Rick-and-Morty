@@ -1,15 +1,28 @@
-body{
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #09090b;
+  color: #e4e4f0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.form-control::placeholder {
-    color: #ffffff6a;
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #09090b; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4ade80; }
+
+/* Material Dialog overrides */
+.mat-mdc-dialog-surface {
+  background: #18181b !important;
+  border-radius: 16px !important;
+  padding: 0 !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dialog-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}

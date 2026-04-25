@@ -1,0 +1,71 @@
+<div class="modal-container">
+  <button class="btn-close" (click)="close()" mat-icon-button>✕</button>
+
+  <div class="modal-content">
+    <div class="character-image">
+      <img [src]="character.image" [alt]="character.name">
+      <button class="btn-favorite" (click)="toggleFavorite()" [class.favorite]="isFavorite">
+        {{ isFavorite ? '❤️' : '🤍' }}
+      </button>
+    </div>
+
+    <div class="character-info">
+      <h2 class="character-name">{{ character.name }}</h2>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Estado</label>
+          <p [ngClass]="{
+            'status-alive': character.status === 'Alive',
+            'status-dead': character.status === 'Dead',
+            'status-unknown': character.status === 'unknown'
+          }">
+            {{ character.status }}
+          </p>
+        </div>
+
+        <div class="info-item">
+          <label>Especie</label>
+          <p>{{ character.species }}</p>
+        </div>
+
+        <div class="info-item">
+          <label>Género</label>
+          <p>{{ character.gender }}</p>
+        </div>
+
+        <div class="info-item">
+          <label>Tipo</label>
+          <p>{{ character.type || 'N/A' }}</p>
+        </div>
+
+        <div class="info-item full-width">
+          <label>Origen</label>
+          <p>{{ character.origin.name }}</p>
+        </div>
+
+        <div class="info-item full-width">
+          <label>Ubicación Actual</label>
+          <p>{{ character.location.name }}</p>
+        </div>
+      </div>
+
+      <div class="episodes-section" *ngIf="character.episode && character.episode.length > 0">
+        <h3>Episodios (primeros 5)</h3>
+        <div *ngIf="loadingEpisodes" class="loading">
+          Cargando episodios...
+        </div>
+        <div *ngIf="!loadingEpisodes && episodes.length > 0" class="episodes-list">
+          <div class="episode-item" *ngFor="let ep of episodes">
+            <strong>{{ ep.name }}</strong>
+            <p>Temporada {{ ep.season }}, Episodio {{ ep.episode }}</p>
+            <small>{{ ep.air_date }}</small>
+          </div>
+        </div>
+        <p *ngIf="!loadingEpisodes && episodes.length === 0" class="no-episodes">
+          No hay episodios disponibles
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

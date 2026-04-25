@@ -1,50 +1,116 @@
-<div style="text-align: center;">
-  <a href="" style="text-decoration: none;">
-    <h1 style="color: white;">RICK AND MORTY <img width="70" alt="Angular Logo"
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-    </h1>
-  </a>
+<!-- LOADER -->
+<div *ngIf="loading" class="loader-overlay">
+  <mat-progress-spinner mode="indeterminate" diameter="44" color="accent"></mat-progress-spinner>
 </div>
 
-<div *ngIf="loading" class="overlay">
-  <mat-progress-spinner mode="indeterminate" color="warn"></mat-progress-spinner>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="brand">
+    <span class="brand-name">Rick <span class="brand-accent">&</span> Morty</span>
+    <span class="brand-sub">Character Explorer</span>
+  </div>
+  <div class="navbar-meta" *ngIf="totalCharacters > 0">
+    <span>{{ totalCharacters }} personajes</span>
+    <span class="sep">·</span>
+    <span>{{ totalPages }} páginas</span>
+  </div>
+</nav>
+
+<!-- CONTROLES: BÚSQUEDA + FILTROS -->
+<div class="controls">
+  <div class="search-wrapper">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input class="search-input" type="text" [(ngModel)]="nameSearch"
+      (input)="onSearchInput()" placeholder="Buscar personaje...">
+    <button *ngIf="nameSearch" class="search-clear" (click)="clearSearch()">✕</button>
+  </div>
+
+  <div class="filter-row">
+    <span class="filter-label">Estado</span>
+    <div class="chips">
+      <button class="chip" [class.active]="selectedStatus === 'Alive'" (click)="toggleStatus('Alive')">
+        <span class="chip-dot alive"></span>Vivo
+      </button>
+      <button class="chip" [class.active]="selectedStatus === 'Dead'" (click)="toggleStatus('Dead')">
+        <span class="chip-dot dead"></span>Muerto
+      </button>
+      <button class="chip" [class.active]="selectedStatus === 'unknown'" (click)="toggleStatus('unknown')">
+        <span class="chip-dot unknown"></span>Desconocido
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <span class="filter-label">Género</span>
+    <div class="chips">
+      <button class="chip" [class.active]="selectedGender === 'Male'" (click)="toggleGender('Male')">Masculino</button>
+      <button class="chip" [class.active]="selectedGender === 'Female'" (click)="toggleGender('Female')">Femenino</button>
+      <button class="chip" [class.active]="selectedGender === 'Genderless'" (click)="toggleGender('Genderless')">Sin género</button>
+      <button class="chip" [class.active]="selectedGender === 'unknown'" (click)="toggleGender('unknown')">Desconocido</button>
+    </div>
+  </div>
+
+  <button class="btn-reset" *ngIf="hasActiveFilters" (click)="clearAllFilters()">
+    ✕ &nbsp;Limpiar filtros
+  </button>
 </div>
 
-
-
-<div>
-  <input type="text" class="form-control bg-dark text-light border-0 my-4 text-center" style="width:50%; margin: auto;"
-    (keyup)="search()" [(ngModel)]="searchcaracter" placeholder="Escribe aquí para buscar...">
+<!-- INFO DE RESULTADOS -->
+<div class="results-info" *ngIf="!loading && totalCharacters > 0">
+  {{ totalCharacters }} personajes · Página {{ currentPage }} de {{ totalPages }}
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let personaje of filtrercaracter">
-      <div class="card bg-dark text-white rounded border border-primary mb-4 animate__animated animate__fadeIn">
-        <!-- animate__zoomInDown, animate__swing, animate__fadeIn -->
-        <img class="card-img-top" src="{{ personaje.image }}" alt="{{ personaje.name }}">
-        <div class="card-body">
-          <h3 class="card-title"> {{ personaje.name.slice(0, 17) }} </h3>
-          <b style="color:rgba(255, 255, 255, 0.656) ;">Estado:</b>
-          <p
-            [ngClass]="personaje.status === 'Alive' ? 'text-success' : personaje.status === 'unknown' ? '' : 'text-danger'">
-            {{ personaje.status }} </p>
-          <b style="color:rgba(255, 255, 255, 0.656) ;">Especie:</b>
-          <p class="card-text"> {{ personaje.species }} </p>
-          <b style="color:rgba(255, 255, 255, 0.656) ;">Genero:</b>
-          <p class="card-text"> {{ personaje.gender }}</p>
-          <b style="color:rgba(255, 255, 255, 0.656) ;">Visto por primera vez en:</b>
-          <p class="card-text">{{ personaje.origin.name }}</p>
-        </div>
+<!-- GRID DE PERSONAJES -->
+<div class="characters-grid" *ngIf="filtrercaracter.length > 0">
+  <div class="character-card" *ngFor="let p of filtrercaracter" (click)="selectCharacter(p)">
+    <div class="card-image">
+      <img [src]="p.image" [alt]="p.name" loading="lazy">
+      <div class="card-gradient"></div>
+
+      <button class="fav-btn" [class.active]="isFavorite(p.id)" (click)="toggleFavorite(p, $event)">
+        <svg viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </button>
+
+      <div class="card-info">
+        <h3>{{ p.name }}</h3>
+        <span class="status-badge">
+          <span class="status-dot" [ngClass]="p.status.toLowerCase()"></span>
+          {{ p.status }} &nbsp;·&nbsp; {{ p.species }}
+        </span>
       </div>
     </div>
   </div>
 </div>
 
-<div style="text-align: center;">
-<h6>Recarga la pagina para que te aparezcan mas personajes :)</h6>
+<!-- ESTADO VACÍO -->
+<div class="empty-state" *ngIf="!loading && filtrercaracter.length === 0">
+  <div class="empty-icon">👽</div>
+  <p>No se encontraron personajes</p>
+  <button *ngIf="hasActiveFilters" (click)="clearAllFilters()">Limpiar filtros</button>
 </div>
 
+<!-- PAGINACIÓN -->
+<div class="pagination" *ngIf="totalPages > 1 && filtrercaracter.length > 0">
+  <button class="page-btn nav" (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
 
-<!-- FOOTER -->
+  <ng-container *ngIf="currentPage > 3">
+    <button class="page-btn" (click)="loadPage(1)">1</button>
+    <span *ngIf="currentPage > 4" class="ellipsis">…</span>
+  </ng-container>
+
+  <button class="page-btn" *ngFor="let p of pageNumbers"
+    [class.active]="p === currentPage" (click)="loadPage(p)">{{ p }}</button>
+
+  <ng-container *ngIf="currentPage < totalPages - 2">
+    <span *ngIf="currentPage < totalPages - 3" class="ellipsis">…</span>
+    <button class="page-btn" (click)="loadPage(totalPages)">{{ totalPages }}</button>
+  </ng-container>
+
+  <button class="page-btn nav" (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+</div>
+
 <app-footer></app-footer>
